@@ -1,188 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy Birthday Lily!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Lily!</title>
 
-<style>
-:root {
-  --bg-sky:#f6fbff;
-  --bg-sand:#faf4ee;
-  --card:rgba(255,255,255,.78);
-  --text-main:#1f1f1f;
-  --text-soft:#7a7a7a;
-  --sunset:rgba(243,193,182,.35);
-  --ocean:rgba(207,231,243,.25);
-}
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --card: #ffffff;
+      --text-main: #1f1f1f;
+      --text-soft: #7a7a7a;
+      --accent: #e7c6c2;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial;
-  background:linear-gradient(to bottom,var(--bg-sky),var(--bg-sand));
-  min-height:100vh;
-  overflow-x:hidden;
-  position:relative;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
 
-/* 🌅 Golden hour glow */
-.golden-glow{
-  position:fixed;
-  inset:-20%;
-  background:
-    radial-gradient(circle at 30% 20%,var(--sunset),transparent 60%),
-    radial-gradient(circle at 70% 30%,rgba(255,224,180,.28),transparent 65%);
-  animation:glowDrift 22s ease-in-out infinite alternate;
-  pointer-events:none;
-  z-index:0;
-}
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 96px 24px;
+    }
 
-@keyframes glowDrift{
-  from{transform:translate(-2%,-2%)}
-  to{transform:translate(2%,2%)}
-}
+    h1 {
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      margin-bottom: 20px;
+    }
 
-/* 🌊 Ocean wave */
-.wave-layer{
-  position:fixed;
-  bottom:-12%;
-  left:0;
-  width:200%;
-  height:40%;
-  background:radial-gradient(ellipse at center,var(--ocean),transparent 70%);
-  animation:waveMove 30s linear infinite;
-  pointer-events:none;
-  z-index:0;
-}
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-soft);
+      margin-bottom: 56px;
+    }
 
-@keyframes waveMove{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
+    .card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+    }
 
-.container{
-  max-width:680px;
-  margin:0 auto;
-  padding:96px 24px 120px;
-  position:relative;
-  z-index:2;
-}
+    .card p {
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
 
-h1{
-  font-size:44px;
-  font-weight:600;
-  margin-bottom:20px;
-}
+    .signature {
+      margin-top: 36px;
+      font-style: italic;
+      color: var(--text-soft);
+    }
 
-.card{
-  background:var(--card);
-  backdrop-filter:blur(12px);
-  border-radius:24px;
-  padding:40px;
-  box-shadow:0 30px 60px rgba(0,0,0,.06);
-}
+    /* Easter egg */
+    .hint {
+      margin-top: 72px;
+      font-size: 13px;
+      color: #c9c9c9;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
 
-.card p{
-  font-size:17px;
-  margin-bottom:20px;
-}
+    .secret {
+      display: none;
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--text-soft);
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+    }
 
-.signature{
-  margin-top:36px;
-  font-style:italic;
-  color:var(--text-soft);
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.hint{
-  margin-top:72px;
-  font-size:13px;
-  color:#c9c9c9;
-  text-align:center;
-  cursor:pointer;
-}
+    /* floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 14px;
+      color: var(--accent);
+      animation: floatUp 6s linear forwards;
+      pointer-events: none;
+    }
 
-.secret{
-  display:none;
-  margin-top:28px;
-  font-size:15px;
-  text-align:center;
-  color:var(--text-soft);
-  animation:fadeIn 1.2s ease forwards;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* 💗 hearts */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:14px;
-  color:var(--sunset);
-  animation:floatUp 6s linear forwards;
-  pointer-events:none;
-  z-index:10;
-}
-
-@keyframes floatUp{
-  from{opacity:0;transform:translateY(0)}
-  20%{opacity:.6}
-  to{opacity:0;transform:translateY(-120vh)}
-}
-</style>
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(0); }
+      20% { opacity: 0.6; }
+      to { opacity: 0; transform: translateY(-120vh); }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <h1> Happy Birthday Lily! </h1>
+    <div class="subtitle">
+      
+    </div>
 
-<div class="golden-glow"></div>
-<div class="wave-layer"></div>
+    <div class="card">
+      <p>I am so happy that we get to spend this beginning week of this new year together. 
+        You have such a rare combination of softness and strength, 
+        and it’s something I’ve always admired about you. You're the best cousin I could ask for. </p>
+      <p>
+        Seeing you happy and being cherished makes me so happy for you. 
+      </p>
+      <p>
+        Wishing you a happy new year filled with calm, love, and everything you deserve! 
+      </p>
+      <p>
+        And I wish nothing but the best for you for this new year and years to come! 
+        Although I have no trouble talking in English, when it comes to express my feelings,
+        somehow I feel the words only express nearly half of the things that I can feel or I want to say.
+        these words probably express only 50% of what I truly feel,
+        so please imagine at least twice as many good wishes coming your way!
+        Hope you have a happy happy birthday fun adventure with Marius in Panama!
+      </p>
 
-<div class="container">
-  <h1>Happy Birthday Lily!</h1>
+      <div class="signature">
+        Sending you lots of lots of love -- Chen Chen
+      </div>
+    </div>
 
-  <div class="card">
-    <p>I am so happy that we get to spend this beginning week of this new year together.
-    You have such a rare combination of softness and strength, and it’s something I’ve always admired about you.</p>
+    <div class="hint" id="hint">( tap here for a surprise )</div>
+<div class="hint" id="hint" role="button" aria-label="Reveal surprise">
 
-    <p>Seeing you happy and being cherished makes me so happy for you.</p>
-
-    <p>Wishing you a happy new year filled with calm, love, and everything you deserve!</p>
-
-    <p>These words probably express only 50% of what I truly feel, so please imagine at least twice as many good wishes coming your way.</p>
-
-    <div class="signature">Sending you lots of lots of love — Chen Chen</div>
+    <div class="secret" id="secret">
+      So grateful to have you in my life! ♡♡♡♡
+    </div>
   </div>
 
-  <div class="hint" id="hint">( tap here for a surprise )</div>
-  <div class="secret" id="secret">So grateful to have you in my life ♡ ♡ ♡ ♡</div>
-</div>
+  <script>
+    const hint = document.getElementById("hint");
+    const secret = document.getElementById("secret");
+    let revealed = false;
 
-<script>
-const hint=document.getElementById("hint");
-const secret=document.getElementById("secret");
-let revealed=false;
+    hint.addEventListener("click", () => {
+      if (revealed) return;
+      revealed = true;
+      secret.style.display = "block";
 
-hint.addEventListener("click",()=>{
-  if(revealed) return;
-  revealed=true;
-  secret.style.display="block";
-  for(let i=0;i<8;i++){
-    setTimeout(createHeart,i*400);
-  }
-});
+      for (let i = 0; i < 7; i++) {
+        setTimeout(createHeart, i * 450);
+      }
+    });
 
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="♡";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
-</script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "♡";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
 
+      setTimeout(() => heart.remove(), 6000);
+    }
+  </script>
 </body>
 </html>
