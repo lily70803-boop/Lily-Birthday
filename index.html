@@ -7,62 +7,61 @@
 
 <style>
 :root {
-  --bg-sky: #f6fbff;
-  --bg-sand: #faf4ee;
-  --card: rgba(255,255,255,0.78);
-  --text-main: #1f1f1f;
-  --text-soft: #7a7a7a;
-  --sunset: rgba(243,193,182,0.35);
-  --ocean: rgba(207,231,243,0.25);
+  --bg-sky:#f6fbff;
+  --bg-sand:#faf4ee;
+  --card:rgba(255,255,255,.78);
+  --text-main:#1f1f1f;
+  --text-soft:#7a7a7a;
+  --sunset:rgba(243,193,182,.35);
+  --ocean:rgba(207,231,243,.25);
 }
 
-* { box-sizing: border-box; margin:0; padding:0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text","Helvetica Neue", Arial;
-  background: linear-gradient(to bottom, var(--bg-sky), var(--bg-sand));
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial;
+  background:linear-gradient(to bottom,var(--bg-sky),var(--bg-sand));
   min-height:100vh;
   overflow-x:hidden;
   position:relative;
 }
 
 /* 🌅 Golden hour glow */
-.golden-glow {
-  position: fixed;
-  inset: -20%;
+.golden-glow{
+  position:fixed;
+  inset:-20%;
   background:
-    radial-gradient(circle at 30% 20%, var(--sunset), transparent 60%),
-    radial-gradient(circle at 70% 30%, rgba(255,224,180,0.28), transparent 65%);
-  animation: glowDrift 22s ease-in-out infinite alternate;
+    radial-gradient(circle at 30% 20%,var(--sunset),transparent 60%),
+    radial-gradient(circle at 70% 30%,rgba(255,224,180,.28),transparent 65%);
+  animation:glowDrift 22s ease-in-out infinite alternate;
   pointer-events:none;
   z-index:0;
-  transition: opacity 1.5s ease;
 }
 
-@keyframes glowDrift {
-  from { transform: translate(-2%, -2%); }
-  to { transform: translate(2%, 2%); }
+@keyframes glowDrift{
+  from{transform:translate(-2%,-2%)}
+  to{transform:translate(2%,2%)}
 }
 
 /* 🌊 Ocean wave */
-.wave-layer {
-  position: fixed;
+.wave-layer{
+  position:fixed;
   bottom:-12%;
   left:0;
   width:200%;
   height:40%;
-  background: radial-gradient(ellipse at center, var(--ocean), transparent 70%);
-  animation: waveMove 30s linear infinite;
+  background:radial-gradient(ellipse at center,var(--ocean),transparent 70%);
+  animation:waveMove 30s linear infinite;
   pointer-events:none;
   z-index:0;
 }
 
-@keyframes waveMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+@keyframes waveMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
 
-.container {
+.container{
   max-width:680px;
   margin:0 auto;
   padding:96px 24px 120px;
@@ -70,101 +69,75 @@ body {
   z-index:2;
 }
 
-h1 {
+h1{
   font-size:44px;
   font-weight:600;
   margin-bottom:20px;
 }
 
-.card {
-  background: var(--card);
-  backdrop-filter: blur(14px);
+.card{
+  background:var(--card);
+  backdrop-filter:blur(12px);
   border-radius:24px;
   padding:40px;
-  box-shadow:0 30px 60px rgba(0,0,0,0.06);
-  transition: transform .4s ease, box-shadow .4s ease;
+  box-shadow:0 30px 60px rgba(0,0,0,.06);
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow:0 40px 80px rgba(0,0,0,0.08);
-}
-
-.card p {
+.card p{
   font-size:17px;
   margin-bottom:20px;
 }
 
-.signature {
+.signature{
   margin-top:36px;
   font-style:italic;
   color:var(--text-soft);
 }
 
-.hint {
+.hint{
   margin-top:72px;
   font-size:13px;
   color:#c9c9c9;
   text-align:center;
   cursor:pointer;
-  letter-spacing:.04em;
 }
 
-.secret {
+.secret{
   display:none;
   margin-top:28px;
   font-size:15px;
   text-align:center;
   color:var(--text-soft);
-  animation: fadeIn 1.2s ease forwards;
+  animation:fadeIn 1.2s ease forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(8px); }
-  to { opacity:1; transform:translateY(0); }
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-/* ripple */
-.ripple {
-  position:fixed;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  background: rgba(255,255,255,0.35);
-  animation:ripple 1.4s ease-out forwards;
-  pointer-events:none;
-  z-index:1;
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(12);
-    opacity:0;
-  }
-}
-
-/* hearts */
-.heart {
+/* 💗 hearts */
+.heart{
   position:fixed;
   bottom:-20px;
   font-size:14px;
   color:var(--sunset);
-  animation: floatUp 6s linear forwards;
+  animation:floatUp 6s linear forwards;
   pointer-events:none;
-  z-index:3;
+  z-index:10;
 }
 
-@keyframes floatUp {
-  from { opacity:0; transform:translateY(0); }
-  20% { opacity:.6; }
-  to { opacity:0; transform:translateY(-120vh); }
+@keyframes floatUp{
+  from{opacity:0;transform:translateY(0)}
+  20%{opacity:.6}
+  to{opacity:0;transform:translateY(-120vh)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="golden-glow" id="glow"></div>
+<div class="golden-glow"></div>
 <div class="wave-layer"></div>
 
 <div class="container">
@@ -188,33 +161,19 @@ h1 {
 </div>
 
 <script>
-const glow = document.getElementById("glow");
-const hint = document.getElementById("hint");
-const secret = document.getElementById("secret");
-let revealed = false;
+const hint=document.getElementById("hint");
+const secret=document.getElementById("secret");
+let revealed=false;
 
-/* surprise */
-hint.onclick = () => {
+hint.addEventListener("click",()=>{
   if(revealed) return;
-  revealed = true;
-  secret.style.display = "block";
-  glow.style.opacity = "1";
-  setTimeout(()=>glow.style.opacity="0.85",2000);
-  for(let i=0;i<8;i++) setTimeout(createHeart,i*400);
-};
-
-/* ripple on click */
-document.addEventListener("click", e => {
-  if(e.target.closest(".card") || e.target.id==="hint") return;
-  const r = document.createElement("div");
-  r.className="ripple";
-  r.style.left = e.clientX+"px";
-  r.style.top = e.clientY+"px";
-  document.body.appendChild(r);
-  setTimeout(()=>r.remove(),1400);
+  revealed=true;
+  secret.style.display="block";
+  for(let i=0;i<8;i++){
+    setTimeout(createHeart,i*400);
+  }
 });
 
-/* hearts */
 function createHeart(){
   const h=document.createElement("div");
   h.className="heart";
@@ -223,11 +182,6 @@ function createHeart(){
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),6000);
 }
-
-/* sunset over time */
-setTimeout(()=>{
-  glow.style.opacity="1";
-},30000);
 </script>
 
 </body>
