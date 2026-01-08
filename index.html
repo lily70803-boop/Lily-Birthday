@@ -7,11 +7,13 @@
 
   <style>
     :root {
-      --bg: #faf9f7;
-      --card: #ffffff;
-      --text-main: #1f1f1f;
-      --text-soft: #7a7a7a;
-      --accent: #e7c6c2;
+      --bg-sky: #f6fbff;
+      --bg-sand: #faf4ee;
+      --card: rgba(255, 255, 255, 0.78);
+      --text-main: #2a2a2a;
+      --text-soft: #7d7d7d;
+      --accent-sunset: #f3c1b6;
+      --accent-ocean: #cfe7f3;
     }
 
     * {
@@ -23,126 +25,154 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(
+        to bottom,
+        var(--bg-sky),
+        var(--bg-sand)
+      );
       color: var(--text-main);
-      line-height: 1.7;
+      line-height: 1.75;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 96px 24px;
+      padding: 100px 24px 120px;
     }
 
     h1 {
-      font-size: 44px;
-      font-weight: 600;
+      font-size: 46px;
+      font-weight: 500;
       letter-spacing: -0.6px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text-soft);
-      margin-bottom: 56px;
+      margin-bottom: 64px;
     }
 
     .card {
       background: var(--card);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 44px;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.08);
     }
 
     .card p {
-      font-size: 17px;
-      margin-bottom: 20px;
+      font-size: 17.5px;
+      margin-bottom: 22px;
     }
 
     .signature {
-      margin-top: 36px;
+      margin-top: 40px;
       font-style: italic;
       color: var(--text-soft);
     }
 
-    /* Easter egg */
+    /* Surprise hint */
     .hint {
-      margin-top: 72px;
+      margin-top: 80px;
       font-size: 13px;
-      color: #c9c9c9;
+      color: #bfbfbf;
       text-align: center;
       cursor: pointer;
       user-select: none;
+      letter-spacing: 0.04em;
     }
 
     .secret {
       display: none;
-      margin-top: 28px;
-      font-size: 15px;
+      margin-top: 32px;
+      font-size: 15.5px;
       color: var(--text-soft);
       text-align: center;
-      animation: fadeIn 1.2s ease forwards;
+      animation: fadeIn 1.4s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* floating hearts */
+    /* Floating sun-dust hearts */
     .heart {
       position: fixed;
-      bottom: -20px;
+      bottom: -24px;
       font-size: 14px;
-      color: var(--accent);
-      animation: floatUp 6s linear forwards;
+      color: var(--accent-sunset);
+      opacity: 0.7;
+      animation: floatUp 7s ease-out forwards;
       pointer-events: none;
     }
 
     @keyframes floatUp {
-      from { opacity: 0; transform: translateY(0); }
-      20% { opacity: 0.6; }
-      to { opacity: 0; transform: translateY(-120vh); }
+      from {
+        transform: translateY(0) scale(0.9);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.1);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1> Happy Birthday Lily! </h1>
+    <h1>Happy Birthday Lily</h1>
     <div class="subtitle">
-      
+      A little California sunshine for your special day
     </div>
 
     <div class="card">
-      <p>I am so happy that we get to spend this beginning week of this new year together. 
-        You have such a rare combination of softness and strength, 
-        and it’s something I’ve always admired about you. You're the best cousin I could ask for. </p>
       <p>
-        Seeing you happy and being cherished makes me so happy for you. 
+        I am so happy that we get to spend this beginning week of this new year together.
+        You have such a rare combination of softness and strength,
+        and it’s something I’ve always admired about you.
+        You’re truly the best cousin I could ask for.
       </p>
+
       <p>
-        Wishing you a happy new year filled with calm, love, and everything you deserve! 
+        Seeing you happy and being cherished makes me genuinely happy.
       </p>
+
       <p>
-        And I wish nothing but the best for you for this new year and years to come! 
-        Although I have no trouble talking in English, when it comes to express my feelings,
-        somehow I feel the words only express nearly half of the things that I can feel or I want to say.
-        these words probably express only 50% of what I truly feel,
-        so please imagine at least twice as many good wishes coming your way!
-        Hope you have a happy happy birthday fun adventure with Marius in Panama!
+        Wishing you a year filled with calm, love, and everything you deserve.
+      </p>
+
+      <p>
+        Although I have no trouble speaking English,
+        when it comes to expressing my feelings,
+        words somehow only capture about half of what I truly feel.
+        So please imagine at least twice as many good wishes coming your way.
+        I hope you have the happiest birthday and a beautiful adventure with Marius in Panama.
       </p>
 
       <div class="signature">
-        Sending you lots of lots of love -- Chen Chen
+        Sending you lots and lots of love — Chen Chen
       </div>
     </div>
 
     <div class="hint" id="hint">( tap here for a surprise )</div>
-<div class="hint" id="hint" role="button" aria-label="Reveal surprise">
 
     <div class="secret" id="secret">
-      So grateful to have you in my life! ♡♡♡♡
+      So grateful to have you in my life ♡ ♡ ♡ ♡
     </div>
   </div>
 
@@ -156,8 +186,8 @@
       revealed = true;
       secret.style.display = "block";
 
-      for (let i = 0; i < 7; i++) {
-        setTimeout(createHeart, i * 450);
+      for (let i = 0; i < 9; i++) {
+        setTimeout(createHeart, i * 420);
       }
     });
 
@@ -168,8 +198,9 @@
       heart.style.left = Math.random() * 100 + "vw";
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 6000);
+      setTimeout(() => heart.remove(), 7000);
     }
   </script>
 </body>
 </html>
+
