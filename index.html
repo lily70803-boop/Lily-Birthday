@@ -10,8 +10,8 @@
       --bg-sky: #f6fbff;
       --bg-sand: #faf4ee;
       --card: rgba(255, 255, 255, 0.78);
-      --text-main: #2a2a2a;
-      --text-soft: #7d7d7d;
+      --text-main: #1f1f1f;
+      --text-soft: #7a7a7a;
       --accent-sunset: #f3c1b6;
       --accent-ocean: #cfe7f3;
     }
@@ -25,61 +25,98 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(
-        to bottom,
-        var(--bg-sky),
-        var(--bg-sand)
-      );
+      background: linear-gradient(to bottom, var(--bg-sky), var(--bg-sand));
       color: var(--text-main);
       line-height: 1.75;
       min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 🌅 Golden hour glow */
+    .golden-glow {
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(243,193,182,0.35), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(255,224,180,0.28), transparent 65%);
+      animation: glowDrift 22s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes glowDrift {
+      from { transform: translate(-2%, -2%); }
+      to   { transform: translate(2%, 2%); }
+    }
+
+    /* 🌊 Pacific Ocean wave */
+    .wave-layer {
+      position: fixed;
+      bottom: -10%;
+      left: 0;
+      width: 200%;
+      height: 40%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(207,231,243,0.25),
+        transparent 70%
+      );
+      animation: waveMove 30s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes waveMove {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
     .container {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 100px 24px 120px;
+      padding: 96px 24px 120px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: 46px;
-      font-weight: 500;
+      font-size: 44px;
+      font-weight: 600;
       letter-spacing: -0.6px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .subtitle {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--text-soft);
-      margin-bottom: 64px;
+      margin-bottom: 56px;
     }
 
     .card {
       background: var(--card);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 28px;
-      padding: 44px;
-      box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
     }
 
     .card p {
-      font-size: 17.5px;
-      margin-bottom: 22px;
+      font-size: 17px;
+      margin-bottom: 20px;
     }
 
     .signature {
-      margin-top: 40px;
+      margin-top: 36px;
       font-style: italic;
       color: var(--text-soft);
     }
 
-    /* Surprise hint */
     .hint {
-      margin-top: 80px;
+      margin-top: 72px;
       font-size: 13px;
-      color: #bfbfbf;
+      color: #c9c9c9;
       text-align: center;
       cursor: pointer;
       user-select: none;
@@ -88,84 +125,75 @@
 
     .secret {
       display: none;
-      margin-top: 32px;
-      font-size: 15.5px;
+      margin-top: 28px;
+      font-size: 15px;
       color: var(--text-soft);
       text-align: center;
-      animation: fadeIn 1.4s ease forwards;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Floating sun-dust hearts */
+    /* floating hearts */
     .heart {
       position: fixed;
-      bottom: -24px;
+      bottom: -20px;
       font-size: 14px;
       color: var(--accent-sunset);
-      opacity: 0.7;
-      animation: floatUp 7s ease-out forwards;
+      animation: floatUp 6s linear forwards;
       pointer-events: none;
+      z-index: 3;
     }
 
     @keyframes floatUp {
-      from {
-        transform: translateY(0) scale(0.9);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.6;
-      }
-      to {
-        transform: translateY(-120vh) scale(1.1);
-        opacity: 0;
-      }
+      from { opacity: 0; transform: translateY(0); }
+      20%  { opacity: 0.6; }
+      to   { opacity: 0; transform: translateY(-120vh); }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Background layers -->
+  <div class="golden-glow"></div>
+  <div class="wave-layer"></div>
+
   <div class="container">
-    <h1>Happy Birthday Lily</h1>
-    <div class="subtitle">
-      A little California sunshine for your special day
-    </div>
+    <h1>Happy Birthday Lily!</h1>
+
+    <div class="subtitle"></div>
 
     <div class="card">
       <p>
         I am so happy that we get to spend this beginning week of this new year together.
         You have such a rare combination of softness and strength,
         and it’s something I’ve always admired about you.
-        You’re truly the best cousin I could ask for.
+        You're the best cousin I could ask for.
       </p>
 
       <p>
-        Seeing you happy and being cherished makes me genuinely happy.
+        Seeing you happy and being cherished makes me so happy for you.
       </p>
 
       <p>
-        Wishing you a year filled with calm, love, and everything you deserve.
+        Wishing you a happy new year filled with calm, love, and everything you deserve!
       </p>
 
       <p>
-        Although I have no trouble speaking English,
-        when it comes to expressing my feelings,
-        words somehow only capture about half of what I truly feel.
-        So please imagine at least twice as many good wishes coming your way.
-        I hope you have the happiest birthday and a beautiful adventure with Marius in Panama.
+        And I wish nothing but the best for you for this new year and years to come!
+        Although I have no trouble talking in English, when it comes to express my feelings,
+        somehow I feel the words only express nearly half of the things that I can feel or I want to say.
+        These words probably express only 50% of what I truly feel,
+        so please imagine at least twice as many good wishes coming your way!
+        Hope you have a happy happy birthday fun adventure with Marius in Panama!
       </p>
 
       <div class="signature">
-        Sending you lots and lots of love — Chen Chen
+        Sending you lots of lots of love — Chen Chen
       </div>
     </div>
 
@@ -180,27 +208,3 @@
     const hint = document.getElementById("hint");
     const secret = document.getElementById("secret");
     let revealed = false;
-
-    hint.addEventListener("click", () => {
-      if (revealed) return;
-      revealed = true;
-      secret.style.display = "block";
-
-      for (let i = 0; i < 9; i++) {
-        setTimeout(createHeart, i * 420);
-      }
-    });
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "♡";
-      heart.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 7000);
-    }
-  </script>
-</body>
-</html>
-
